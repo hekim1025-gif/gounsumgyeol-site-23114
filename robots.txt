@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://고운숨결문학상.com/sitemap.xml
