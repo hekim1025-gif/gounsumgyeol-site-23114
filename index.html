@@ -273,6 +273,65 @@
   .prize-row .name small{ color: var(--muted); font-family:'Noto Sans KR'; font-size:12px; margin-left:6px; }
   .prize-row .amt{ color: var(--gold-bright); font-weight:500; }
 
+  /* ---------- winners ---------- */
+  .winner-card{
+    border: 1px solid var(--card-line); background: var(--card);
+    padding: 24px 20px;
+  }
+  .winner-block{ margin-top: 4px; }
+  .winner-group{ margin-bottom: 22px; }
+  .winner-group:last-child{ margin-bottom: 0; }
+  .winner-tier{
+    font-family:'Noto Serif KR'; font-weight:700; font-size: 14px; color: var(--gold-bright);
+    margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--card-line);
+  }
+  .winner-row{
+    display:flex; justify-content:space-between; align-items:baseline; gap: 14px;
+    padding: 9px 2px; font-size: 13.5px;
+  }
+  .winner-row .wname{ color: var(--cream); font-weight:600; flex-shrink:0; }
+  .winner-row .wwork{ color: var(--muted); text-align:right; }
+
+  /* ---------- winner popup ---------- */
+  .popup-overlay{
+    position: fixed; inset:0; z-index: 70; background: rgba(40,30,15,0.5);
+    opacity:0; pointer-events:none; transition: opacity 0.35s ease;
+  }
+  .popup-overlay.show{ opacity:1; pointer-events:auto; }
+  .popup-modal{
+    position: fixed; left:50%; top:50%; z-index: 72;
+    width: 86%; max-width: 360px;
+    transform: translate(-50%, -46%);
+    background: linear-gradient(180deg, #fffdf7, #f3e8ce);
+    border: 1px solid var(--card-line);
+    padding: 36px 26px 26px;
+    opacity:0; pointer-events:none;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.22,.61,.36,1);
+    box-shadow: 0 30px 70px rgba(50,35,10,0.3);
+  }
+  .popup-modal.show{ opacity:1; pointer-events:auto; transform: translate(-50%, -50%); }
+  .popup-close{
+    position:absolute; top:12px; right:14px; background:none; border:none;
+    font-size: 24px; color: var(--muted); line-height:1; cursor:pointer; padding: 6px;
+  }
+  .popup-eyebrow{ font-size: 11px; letter-spacing:0.2em; color: var(--gold); text-align:center; }
+  .popup-title{
+    font-family:'Noto Serif KR'; font-weight:700; font-size: 20px; color: var(--cream);
+    text-align:center; margin: 8px 0 20px;
+  }
+  .popup-body{ border-top: 1px solid var(--card-line); }
+  .popup-row{
+    display:flex; justify-content:space-between; align-items:baseline; gap: 10px;
+    padding: 12px 2px; border-bottom: 1px solid var(--card-line); font-size: 13px;
+  }
+  .popup-row .tier{ color: var(--gold-bright); font-weight:600; flex-shrink:0; }
+  .popup-row .pname{ color: var(--cream); text-align:right; }
+  .popup-link{ display:block; margin: 20px auto 0; }
+  .popup-dismiss{
+    display:flex; align-items:center; gap:6px; justify-content:center;
+    margin-top: 14px; font-size: 12px; color: var(--muted); cursor:pointer;
+  }
+
   /* ---------- info grid ---------- */
   .info-grid{ display:flex; flex-direction:column; gap: 14px; }
   .info-item{
@@ -483,6 +542,21 @@
 </style>
 </head>
 <body>
+
+<div class="popup-overlay" id="winnerPopupOverlay"></div>
+<div class="popup-modal" id="winnerPopup">
+  <button class="popup-close" onclick="closeWinnerPopup()" aria-label="닫기">&times;</button>
+  <div class="popup-eyebrow">제1회 고운숨결 문학상</div>
+  <h3 class="popup-title">당선작 발표</h3>
+  <div class="popup-body">
+    <div class="popup-row"><span class="tier">대상</span><span class="pname">박현주</span></div>
+    <div class="popup-row"><span class="tier">최우수상</span><span class="pname">이승형</span></div>
+    <div class="popup-row"><span class="tier">우수상</span><span class="pname">남원정 · 정미숙</span></div>
+    <div class="popup-row"><span class="tier">장려상</span><span class="pname">석기철 · 이진백 · 권승훈 · 김이련 · 하훙</span></div>
+  </div>
+  <a href="#notice" class="btn btn-primary popup-link" onclick="closeWinnerPopup()">수상작 자세히 보기</a>
+  <label class="popup-dismiss"><input type="checkbox" id="popupDismissToday"> 오늘 하루 보지 않기</label>
+</div>
 
 <div class="frame-corner tl"></div>
 <div class="frame-corner tr"></div>
@@ -791,6 +865,13 @@
       <div class="notice-row">
         <span class="tag new">NEW</span>
         <div class="body">
+          <div class="t">제1회 고운숨결 문학상 당선작 발표</div>
+          <div class="d">2026.10.21</div>
+        </div>
+      </div>
+      <div class="notice-row">
+        <span class="tag">공지</span>
+        <div class="body">
           <div class="t">제1회 고운숨결 문학상 《그리고 다시, 우리》 독후감 공모전 접수 시작</div>
           <div class="d">2026.08.24</div>
         </div>
@@ -801,6 +882,31 @@
           <div class="t">당선작 발표 일정 안내 (2026.10.21 예정)</div>
           <div class="d">2026.08.24</div>
         </div>
+      </div>
+    </div>
+
+    <h3 class="sub-block-title reveal">제1회 고운숨결 문학상 당선작</h3>
+    <div class="winner-card reveal winner-block">
+      <div class="winner-group">
+        <div class="winner-tier">대 상</div>
+        <div class="winner-row"><span class="wname">박현주</span><span class="wwork">숨을 고르는 일, 다시 쓰는 일</span></div>
+      </div>
+      <div class="winner-group">
+        <div class="winner-tier">최우수상</div>
+        <div class="winner-row"><span class="wname">이승형</span><span class="wwork">붙드는 손</span></div>
+      </div>
+      <div class="winner-group">
+        <div class="winner-tier">우수상</div>
+        <div class="winner-row"><span class="wname">남원정</span><span class="wwork">멎어 있던 숨이 다시 흐를 때</span></div>
+        <div class="winner-row"><span class="wname">정미숙</span><span class="wwork">성림의 숨</span></div>
+      </div>
+      <div class="winner-group">
+        <div class="winner-tier">장려상</div>
+        <div class="winner-row"><span class="wname">석기철</span><span class="wwork">가장 약한 숨까지 끌어안는 사랑의 구원</span></div>
+        <div class="winner-row"><span class="wname">이진백</span><span class="wwork">놓아줌으로써 완성되는 사랑에 관하여</span></div>
+        <div class="winner-row"><span class="wname">권승훈</span><span class="wwork">뒷걸음질</span></div>
+        <div class="winner-row"><span class="wname">김이련</span><span class="wwork">문을 열고 다시 우리의 흐름으로</span></div>
+        <div class="winner-row"><span class="wname">하훙</span><span class="wwork">내가 상처받은 것만 기억하고 있었다</span></div>
       </div>
     </div>
 
@@ -863,6 +969,30 @@
   }
 
   // form -> mailto draft
+
+  // winner popup
+  (function(){
+    const KEY = 'winnerPopupHideUntil';
+    const overlay = document.getElementById('winnerPopupOverlay');
+    const modal = document.getElementById('winnerPopup');
+    function openPopup(){
+      let hideUntil = 0;
+      try{ hideUntil = Number(localStorage.getItem(KEY)) || 0; }catch(e){}
+      if(Date.now() < hideUntil) return;
+      overlay.classList.add('show');
+      modal.classList.add('show');
+    }
+    window.closeWinnerPopup = function(){
+      const dismiss = document.getElementById('popupDismissToday');
+      if(dismiss && dismiss.checked){
+        try{ localStorage.setItem(KEY, Date.now() + 24*60*60*1000); }catch(e){}
+      }
+      overlay.classList.remove('show');
+      modal.classList.remove('show');
+    };
+    overlay.addEventListener('click', window.closeWinnerPopup);
+    setTimeout(openPopup, 500);
+  })();
 </script>
 
 </body>
