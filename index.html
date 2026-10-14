@@ -45,6 +45,17 @@
   }
   .wrap{ max-width: 520px; margin: 0 auto; position: relative; }
 
+  /* ---------- responsive (tablet / desktop) ---------- */
+  @media (min-width: 640px){
+    .wrap{ max-width: 640px; }
+    section{ padding: 68px 44px; }
+    .hero{ padding: 130px 44px 64px; }
+  }
+  @media (min-width: 900px){
+    .wrap{ max-width: 760px; }
+    body{ font-size: 15px; }
+  }
+
   /* ---------- ornament frame ---------- */
   .frame-corner{
     position: fixed; width: 34px; height: 34px; border: 1px solid var(--gold);
