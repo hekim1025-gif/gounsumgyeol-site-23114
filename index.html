@@ -32,6 +32,7 @@
     --ember-bright: #e0794f;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
+  [hidden]{ display:none !important; }
   html{ scroll-behavior:smooth; }
   body{
     background:
@@ -656,6 +657,16 @@
 
     .winner-block{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 4px 36px; align-items:start; }
     .winner-group{ margin-bottom: 0; padding-bottom: 22px; }
+
+    .popup-modal{
+      width: 90%; max-width: 480px; padding: 54px 44px 38px;
+    }
+    .popup-badge{ width: 58px; height:58px; font-size: 27px; }
+    .popup-title{ font-size: 30px; margin: 8px 0 26px; }
+    .popup-eyebrow{ font-size: 12.5px; }
+    .popup-row{ font-size: 14.5px; padding: 14px 2px; }
+    .popup-row.grand .pname{ font-size: 18px; }
+    .popup-link{ max-width: 320px; }
   }
 </style>
 </head>
@@ -1001,7 +1012,7 @@
     <p class="section-lede reveal">공모전과 관련한 주요 소식을 안내해 드립니다.</p>
 
     <div class="notice-list reveal">
-      <div class="notice-row">
+      <div class="notice-row" id="noticeWinnerRow" hidden>
         <span class="tag new">NEW</span>
         <div class="body">
           <div class="t">제1회 고운숨결 문학상 수상자 발표</div>
@@ -1024,32 +1035,38 @@
       </div>
     </div>
 
-    <h3 class="sub-block-title reveal">제1회 고운숨결 문학상 수상자</h3>
-    <div class="winner-card reveal winner-block">
-      <span class="winner-card-corner tl"></span>
-      <span class="winner-card-corner tr"></span>
-      <span class="winner-card-corner bl"></span>
-      <span class="winner-card-corner br"></span>
-      <div class="winner-group tier-grand">
-        <div class="winner-tier">🏆 대 상</div>
-        <div class="winner-row"><span class="wname">박현주</span><span class="wwork">숨을 고르는 일, 다시 쓰는 일</span></div>
-      </div>
-      <div class="winner-group">
-        <div class="winner-tier">최우수상</div>
-        <div class="winner-row"><span class="wname">이승형</span><span class="wwork">붙드는 손</span></div>
-      </div>
-      <div class="winner-group">
-        <div class="winner-tier">우수상</div>
-        <div class="winner-row"><span class="wname">남원정</span><span class="wwork">멎어 있던 숨이 다시 흐를 때</span></div>
-        <div class="winner-row"><span class="wname">정미숙</span><span class="wwork">성림의 숨</span></div>
-      </div>
-      <div class="winner-group">
-        <div class="winner-tier">장려상</div>
-        <div class="winner-row"><span class="wname">석기철</span><span class="wwork">가장 약한 숨까지 끌어안는 사랑의 구원</span></div>
-        <div class="winner-row"><span class="wname">이진백</span><span class="wwork">놓아줌으로써 완성되는 사랑에 관하여</span></div>
-        <div class="winner-row"><span class="wname">권승훈</span><span class="wwork">뒷걸음질</span></div>
-        <div class="winner-row"><span class="wname">김이련</span><span class="wwork">문을 열고 다시 우리의 흐름으로</span></div>
-        <div class="winner-row"><span class="wname">하웅</span><span class="wwork">내가 상처받은 것만 기억하고 있었다</span></div>
+    <div class="notice-box reveal" id="winnerPending">
+      수상자 명단은 <b style="color:var(--gold-bright)">2026.10.21(수) 00:00</b>에 이 페이지를 통해 공개됩니다.
+    </div>
+
+    <div id="winnerResults" hidden>
+      <h3 class="sub-block-title reveal">제1회 고운숨결 문학상 수상자</h3>
+      <div class="winner-card reveal winner-block">
+        <span class="winner-card-corner tl"></span>
+        <span class="winner-card-corner tr"></span>
+        <span class="winner-card-corner bl"></span>
+        <span class="winner-card-corner br"></span>
+        <div class="winner-group tier-grand">
+          <div class="winner-tier">🏆 대 상</div>
+          <div class="winner-row"><span class="wname">박현주</span><span class="wwork">숨을 고르는 일, 다시 쓰는 일</span></div>
+        </div>
+        <div class="winner-group">
+          <div class="winner-tier">최우수상</div>
+          <div class="winner-row"><span class="wname">이승형</span><span class="wwork">붙드는 손</span></div>
+        </div>
+        <div class="winner-group">
+          <div class="winner-tier">우수상</div>
+          <div class="winner-row"><span class="wname">남원정</span><span class="wwork">멎어 있던 숨이 다시 흐를 때</span></div>
+          <div class="winner-row"><span class="wname">정미숙</span><span class="wwork">성림의 숨</span></div>
+        </div>
+        <div class="winner-group">
+          <div class="winner-tier">장려상</div>
+          <div class="winner-row"><span class="wname">석기철</span><span class="wwork">가장 약한 숨까지 끌어안는 사랑의 구원</span></div>
+          <div class="winner-row"><span class="wname">이진백</span><span class="wwork">놓아줌으로써 완성되는 사랑에 관하여</span></div>
+          <div class="winner-row"><span class="wname">권승훈</span><span class="wwork">뒷걸음질</span></div>
+          <div class="winner-row"><span class="wname">김이련</span><span class="wwork">문을 열고 다시 우리의 흐름으로</span></div>
+          <div class="winner-row"><span class="wname">하웅</span><span class="wwork">내가 상처받은 것만 기억하고 있었다</span></div>
+        </div>
       </div>
     </div>
 
@@ -1113,12 +1130,36 @@
 
   // form -> mailto draft
 
+  // winner reveal gate
+  (function(){
+    const REVEAL_AT = new Date('2026-10-21T00:00:00+09:00').getTime();
+    window.__winnersRevealed = false;
+    function revealWinners(){
+      window.__winnersRevealed = true;
+      const pending = document.getElementById('winnerPending');
+      const results = document.getElementById('winnerResults');
+      const noticeRow = document.getElementById('noticeWinnerRow');
+      if(pending) pending.hidden = true;
+      if(results) results.hidden = false;
+      if(noticeRow) noticeRow.hidden = false;
+      window.dispatchEvent(new Event('winnersRevealed'));
+    }
+    function scheduleCheck(){
+      if(Date.now() >= REVEAL_AT){ revealWinners(); return; }
+      const remaining = REVEAL_AT - Date.now();
+      const delay = Math.min(remaining, 24*60*60*1000);
+      setTimeout(scheduleCheck, delay);
+    }
+    scheduleCheck();
+  })();
+
   // winner popup
   (function(){
     const KEY = 'winnerPopupHideUntil';
     const overlay = document.getElementById('winnerPopupOverlay');
     const modal = document.getElementById('winnerPopup');
     function openPopup(){
+      if(!window.__winnersRevealed) return;
       let hideUntil = 0;
       try{ hideUntil = Number(localStorage.getItem(KEY)) || 0; }catch(e){}
       if(Date.now() < hideUntil) return;
@@ -1135,6 +1176,7 @@
     };
     overlay.addEventListener('click', window.closeWinnerPopup);
     setTimeout(openPopup, 500);
+    window.addEventListener('winnersRevealed', openPopup);
   })();
 </script>
 
