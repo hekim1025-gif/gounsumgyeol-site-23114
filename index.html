@@ -248,9 +248,15 @@
     margin-top: 6px;
   }
   .grand-box{
-    border: 1px solid var(--gold); padding: 30px 20px; text-align:center;
-    background: linear-gradient(180deg, rgba(201,162,74,0.08), transparent);
+    border: 2px solid var(--gold); padding: 36px 20px 32px; text-align:center;
+    background: linear-gradient(180deg, rgba(201,162,74,0.16), rgba(201,162,74,0.02));
     position:relative; margin-bottom: 22px;
+    box-shadow: 0 0 0 1px rgba(201,162,74,0.12);
+    animation: grandGlow 3.2s ease-in-out infinite;
+  }
+  @keyframes grandGlow{
+    0%,100%{ box-shadow: 0 0 0 1px rgba(201,162,74,0.12), 0 10px 30px rgba(179,135,47,0.18); }
+    50%{ box-shadow: 0 0 0 1px rgba(201,162,74,0.22), 0 14px 44px rgba(179,135,47,0.32); }
   }
   .grand-box::before, .grand-box::after{
     content:''; position:absolute; top:14px; bottom:14px; width:1px;
@@ -258,12 +264,19 @@
     opacity:0.5;
   }
   .grand-box::before{ left: 14px; } .grand-box::after{ right:14px; }
-  .grand-name{ font-family:'Noto Serif KR'; font-size: 15px; color: var(--gold); letter-spacing:0.1em; }
-  .grand-amount{
-    font-family:'Noto Serif KR'; font-weight:900; font-size: 44px; color: var(--gold-bright);
-    margin: 8px 0 2px;
+  .grand-badge{
+    display:inline-block; font-family:'Noto Sans KR'; font-weight:700; font-size: 10.5px;
+    letter-spacing:0.25em; color:#1a1206;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold) 70%);
+    padding: 5px 14px; margin-bottom: 14px;
+    box-shadow: 0 6px 16px rgba(179,135,47,0.35);
   }
-  .grand-amount span{ font-size: 18px; font-weight:500; }
+  .grand-name{ font-family:'Noto Serif KR'; font-weight:700; font-size: 16px; color: var(--gold-bright); letter-spacing:0.1em; }
+  .grand-amount{
+    font-family:'Noto Serif KR'; font-weight:900; font-size: 50px; color: var(--gold-bright);
+    margin: 10px 0 2px; text-shadow: 0 2px 24px rgba(201,162,74,0.35);
+  }
+  .grand-amount span{ font-size: 19px; font-weight:500; }
   .prize-list{ border-top: 1px solid var(--card-line); }
   .prize-row{
     display:flex; justify-content:space-between; align-items:baseline;
@@ -747,6 +760,7 @@
     </div>
 
     <div class="grand-box reveal">
+      <div class="grand-badge">GRAND PRIZE</div>
       <div class="grand-name">대 상 &nbsp;·&nbsp; 1명</div>
       <div class="grand-amount">1,000<span>만원</span></div>
     </div>
