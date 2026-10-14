@@ -289,22 +289,44 @@
 
   /* ---------- winners ---------- */
   .winner-card{
-    border: 1px solid var(--card-line); background: var(--card);
-    padding: 24px 20px;
+    position:relative; border: 1px solid var(--card-line); background: var(--card);
+    padding: 34px 22px 26px; overflow:hidden;
   }
+  .winner-card::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%);
+  }
+  .winner-card-corner{ position:absolute; width:14px; height:14px; border: 1px solid var(--gold); opacity:0.55; pointer-events:none; }
+  .winner-card-corner.tl{ top:14px; left:12px; border-right:none; border-bottom:none; }
+  .winner-card-corner.tr{ top:14px; right:12px; border-left:none; border-bottom:none; }
+  .winner-card-corner.bl{ bottom:12px; left:12px; border-right:none; border-top:none; }
+  .winner-card-corner.br{ bottom:12px; right:12px; border-left:none; border-top:none; }
   .winner-block{ margin-top: 4px; }
-  .winner-group{ margin-bottom: 22px; }
+  .winner-group{ margin-bottom: 24px; }
   .winner-group:last-child{ margin-bottom: 0; }
   .winner-tier{
-    font-family:'Noto Serif KR'; font-weight:700; font-size: 14px; color: var(--gold-bright);
-    margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--card-line);
+    display:inline-flex; align-items:center; gap: 6px;
+    font-family:'Noto Serif KR'; font-weight:700; font-size: 12.5px; color:#1a1206;
+    letter-spacing:0.06em; margin-bottom: 10px; padding: 5px 13px;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold) 75%);
+    box-shadow: 0 4px 12px rgba(179,135,47,0.3);
   }
   .winner-row{
     display:flex; justify-content:space-between; align-items:baseline; gap: 14px;
-    padding: 9px 2px; font-size: 13.5px;
+    padding: 10px 4px; font-size: 13.5px; border-bottom: 1px dashed var(--card-line);
   }
-  .winner-row .wname{ color: var(--cream); font-weight:600; flex-shrink:0; }
+  .winner-row:last-child{ border-bottom:none; }
+  .winner-row .wname{ color: var(--cream); font-weight:700; flex-shrink:0; font-family:'Noto Serif KR'; }
   .winner-row .wwork{ color: var(--muted); text-align:right; }
+  .winner-group.tier-grand{
+    background: linear-gradient(135deg, rgba(201,162,74,0.14), rgba(201,162,74,0.02));
+    margin: -6px -8px 24px; padding: 18px 16px 6px;
+    border: 1px solid rgba(179,135,47,0.3);
+  }
+  .winner-group.tier-grand .winner-tier{ font-size: 13px; }
+  .winner-group.tier-grand .winner-row{ border-bottom-style:solid; border-bottom-color: rgba(179,135,47,0.25); }
+  .winner-group.tier-grand .winner-row .wname{ font-size: 15.5px; }
+  .winner-group.tier-grand .winner-row .wwork{ color: var(--gold-bright); font-weight:600; }
 
   /* ---------- winner popup ---------- */
   .popup-overlay{
@@ -1004,8 +1026,12 @@
 
     <h3 class="sub-block-title reveal">제1회 고운숨결 문학상 수상자</h3>
     <div class="winner-card reveal winner-block">
-      <div class="winner-group">
-        <div class="winner-tier">대 상</div>
+      <span class="winner-card-corner tl"></span>
+      <span class="winner-card-corner tr"></span>
+      <span class="winner-card-corner bl"></span>
+      <span class="winner-card-corner br"></span>
+      <div class="winner-group tier-grand">
+        <div class="winner-tier">🏆 대 상</div>
         <div class="winner-row"><span class="wname">박현주</span><span class="wwork">숨을 고르는 일, 다시 쓰는 일</span></div>
       </div>
       <div class="winner-group">
