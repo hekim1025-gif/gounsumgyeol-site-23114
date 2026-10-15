@@ -320,13 +320,25 @@
   .winner-row .wname{ color: var(--cream); font-weight:700; flex-shrink:0; font-family:'Noto Serif KR'; }
   .winner-row .wwork{ color: var(--muted); text-align:right; }
   .winner-group.tier-grand{
-    background: linear-gradient(135deg, rgba(201,162,74,0.14), rgba(201,162,74,0.02));
-    margin: -6px -8px 24px; padding: 18px 16px 6px;
-    border: 1px solid rgba(179,135,47,0.3);
+    position:relative; overflow:hidden;
+    background: linear-gradient(135deg, rgba(201,162,74,0.2), rgba(201,162,74,0.03));
+    margin: -6px -8px 24px; padding: 20px 18px 8px;
+    border: 2px solid var(--gold);
+    animation: grandGlow 3.2s ease-in-out infinite;
   }
-  .winner-group.tier-grand .winner-tier{ font-size: 13px; }
+  .winner-group.tier-grand::before{
+    content:'✦'; position:absolute; top:6px; left:10px; color: var(--gold); opacity:0.55; font-size:12px;
+  }
+  .winner-group.tier-grand::after{
+    content:'✦'; position:absolute; top:6px; right:10px; color: var(--gold); opacity:0.55; font-size:12px;
+  }
+  .winner-group.tier-grand .winner-tier{
+    font-size: 13.5px; box-shadow: 0 6px 16px rgba(179,135,47,0.4);
+  }
   .winner-group.tier-grand .winner-row{ border-bottom-style:solid; border-bottom-color: rgba(179,135,47,0.25); }
-  .winner-group.tier-grand .winner-row .wname{ font-size: 15.5px; }
+  .winner-group.tier-grand .winner-row .wname{
+    font-size: 17px; text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+  }
   .winner-group.tier-grand .winner-row .wwork{ color: var(--gold-bright); font-weight:600; }
 
   /* ---------- winner popup ---------- */
@@ -412,12 +424,23 @@
     padding: 12px 2px; border-bottom: 1px solid var(--card-line); font-size: 13px;
   }
   .popup-row.grand{
-    margin: 0 -10px; padding: 14px 10px; border-radius: 2px;
-    background: linear-gradient(135deg, rgba(201,162,74,0.16), rgba(201,162,74,0.04));
-    border-bottom: 1px solid rgba(179,135,47,0.3);
+    position:relative; overflow:hidden;
+    margin: 2px -10px 10px; padding: 16px 14px;
+    background: linear-gradient(135deg, rgba(201,162,74,0.2), rgba(201,162,74,0.04));
+    border: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+    animation: grandGlow 3.2s ease-in-out infinite;
   }
-  .popup-row.grand .tier{ font-family:'Noto Serif KR'; font-size:14px; }
-  .popup-row.grand .pname{ font-family:'Noto Serif KR'; font-weight:700; font-size:16px; color: var(--gold-bright); }
+  .popup-row.grand::before{
+    content:'✦'; position:absolute; top:5px; left:10px; color: var(--gold); opacity:0.6; font-size:11px;
+  }
+  .popup-row.grand::after{
+    content:'✦'; position:absolute; top:5px; right:10px; color: var(--gold); opacity:0.6; font-size:11px;
+  }
+  .popup-row.grand .tier{ font-family:'Noto Serif KR'; font-weight:700; font-size:14.5px; }
+  .popup-row.grand .pname{
+    font-family:'Noto Serif KR'; font-weight:800; font-size:19px; color: var(--gold-bright);
+    text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+  }
   .popup-row .tier{ color: var(--gold-bright); font-weight:600; flex-shrink:0; }
   .popup-row .pname{ color: var(--cream); text-align:right; }
   .popup-link{ position:relative; z-index:2; display:block; margin: 22px auto 0; }
@@ -721,7 +744,7 @@
   <div class="popup-divider"><span class="line"></span><span class="mark">◆</span><span class="line"></span></div>
   <h3 class="popup-title">수상자 발표</h3>
   <div class="popup-body">
-    <div class="popup-row grand"><span class="tier">대상</span><span class="pname">박현주</span></div>
+    <div class="popup-row grand"><span class="tier">🏆 대상</span><span class="pname">박현주</span></div>
     <div class="popup-row"><span class="tier">최우수상</span><span class="pname">이승형</span></div>
     <div class="popup-row"><span class="tier">우수상</span><span class="pname">정미숙 · 남원장</span></div>
     <div class="popup-row"><span class="tier">장려상</span><span class="pname">석기철 · 이진백 · 권승훈 · 김이련 · 하웅</span></div>
