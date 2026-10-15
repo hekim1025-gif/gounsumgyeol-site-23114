@@ -416,13 +416,18 @@
   }
   .popup-eyebrow{
     position:relative; z-index:2; font-family:'Noto Sans KR'; font-weight:800;
-    font-size: 16px; letter-spacing:0.16em; color: var(--muted); text-align:center;
+    font-size: 19px; letter-spacing:0.14em; color: var(--muted); text-align:center;
     line-height:1.8;
   }
   .popup-grand{
-    position:relative; z-index:2; text-align:center; margin: 14px 0 22px;
-    padding: 22px 16px 20px; border: 1px solid var(--gold);
-    background: linear-gradient(180deg, rgba(217,169,76,0.14), rgba(0,0,0,0.2));
+    position:relative; z-index:2; margin: 16px 0 22px; padding: 2px;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+    clip-path: polygon(4% 0%, 96% 0%, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
+  }
+  .popup-grand-inner{
+    text-align:center; padding: 22px 34px 20px;
+    background: linear-gradient(180deg, #1c1208, #0c0703);
+    clip-path: polygon(4% 0%, 96% 0%, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
   }
   .popup-grand-tier{
     font-family:'Noto Sans KR'; font-weight:700; font-size:13px;
@@ -719,7 +724,7 @@
     }
     .popup-stage{ margin: -54px -44px 22px; height: 190px; }
     .popup-stage .trophy{ font-size: 64px; }
-    .popup-eyebrow{ font-size: 19px; }
+    .popup-eyebrow{ font-size: 23px; }
     .popup-grand-name{ font-size: 52px; }
     .popup-grand-tier{ font-size: 14px; }
     .badge-label{ font-size: 12px; }
@@ -759,8 +764,10 @@
   </div>
   <div class="popup-eyebrow">제1회 고운숨결 문학상<br>수상자 발표</div>
   <div class="popup-grand">
-    <div class="popup-grand-tier">🏆 대 상</div>
-    <div class="popup-grand-name">박현주</div>
+    <div class="popup-grand-inner">
+      <div class="popup-grand-tier">🏆 대 상</div>
+      <div class="popup-grand-name">박현주</div>
+    </div>
   </div>
   <div class="popup-badges">
     <div class="badge">
