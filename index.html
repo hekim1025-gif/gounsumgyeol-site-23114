@@ -415,44 +415,41 @@
     box-shadow: 0 0 6px 1px rgba(255,214,120,0.7);
   }
   .popup-eyebrow{
-    position:relative; z-index:2; font-family:'Noto Serif KR'; font-weight:900;
-    font-size: 19px; letter-spacing:0.12em; color: var(--gold-bright); text-align:center;
-    text-shadow: 0 0 14px rgba(240,200,104,0.45);
+    position:relative; z-index:2; font-family:'Noto Sans KR'; font-weight:700;
+    font-size: 12.5px; letter-spacing:0.22em; color: var(--muted); text-align:center;
+    line-height:1.9;
   }
-  .popup-divider{ display:flex; align-items:center; justify-content:center; gap:10px; margin: 10px 0 4px; position:relative; z-index:2; }
-  .popup-divider .line{ width:26px; height:1px; background: var(--gold); opacity:0.55; }
-  .popup-divider .mark{ color: var(--gold); font-size: 10px; }
-  .popup-title{
-    position:relative; z-index:2;
-    font-family:'Noto Serif KR'; font-weight:900; font-size: 28px; color: var(--gold-bright);
-    text-align:center; margin: 6px 0 22px; letter-spacing:0.01em;
+  .popup-grand{
+    position:relative; z-index:2; text-align:center; margin: 10px 0 22px;
   }
-  .popup-body{ position:relative; z-index:2; border-top: 1px solid var(--card-line); }
-  .popup-row{
-    display:flex; justify-content:space-between; align-items:baseline; gap: 10px;
-    padding: 13px 2px; border-bottom: 1px solid var(--card-line); font-size: 15.5px;
+  .grand-tier{
+    font-family:'Noto Sans KR'; font-weight:700; font-size:13px;
+    letter-spacing:0.2em; color: var(--gold); margin-bottom:10px;
   }
-  .popup-row.grand{
-    position:relative; overflow:hidden;
-    margin: 2px -10px 10px; padding: 16px 14px;
-    background: linear-gradient(135deg, rgba(201,162,74,0.2), rgba(201,162,74,0.04));
-    border: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
-    animation: grandGlow 3.2s ease-in-out infinite;
+  .grand-name{
+    font-family:'Noto Serif KR'; font-weight:900; font-size:40px; color: var(--gold-bright);
+    text-shadow: 0 0 22px rgba(246,205,122,0.55); line-height:1.2;
   }
-  .popup-row.grand::before{
-    content:'✦'; position:absolute; top:5px; left:10px; color: var(--gold); opacity:0.6; font-size:11px;
+  .popup-badges{
+    position:relative; z-index:2; display:flex; gap:8px; margin: 0 0 4px;
   }
-  .popup-row.grand::after{
-    content:'✦'; position:absolute; top:5px; right:10px; color: var(--gold); opacity:0.6; font-size:11px;
+  .badge{
+    flex:1; text-align:center; padding: 14px 4px 12px; position:relative;
+    border: 1px solid var(--card-line); background: rgba(217,169,76,0.07);
   }
-  .popup-row.grand .tier{ font-family:'Noto Serif KR'; font-weight:800; font-size:16.5px; }
-  .popup-row.grand .pname{
-    font-family:'Noto Serif KR'; font-weight:900; font-size:21px; color: var(--gold-bright);
-    text-shadow: 0 0 14px rgba(240,200,104,0.4);
+  .badge::before{
+    content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:22px; height:2px; background: var(--gold); opacity:0.55;
   }
-  .popup-row .tier{ color: var(--gold-bright); font-weight:800; flex-shrink:0; font-size:15px; }
-  .popup-row .pname{ color: var(--cream); text-align:right; font-weight:700; font-size:16px; line-height:1.6; }
-  .popup-link{ position:relative; z-index:2; display:block; margin: 22px auto 0; }
+  .badge-label{
+    font-family:'Noto Sans KR'; font-weight:700; font-size:11px; letter-spacing:0.03em;
+    color: var(--muted); margin-bottom:6px;
+  }
+  .badge-value{
+    font-family:'Noto Serif KR'; font-weight:800; font-size:14.5px; color: var(--gold-bright);
+    line-height:1.35;
+  }
+  .popup-link{ position:relative; z-index:2; display:block; margin: 24px auto 0; }
   .popup-dismiss{
     position:relative; z-index:2;
     display:flex; align-items:center; gap:6px; justify-content:center;
@@ -719,13 +716,11 @@
     }
     .popup-stage{ margin: -54px -44px 22px; height: 190px; }
     .popup-stage .trophy{ font-size: 64px; }
-    .popup-title{ font-size: 34px; margin: 8px 0 26px; }
-    .popup-eyebrow{ font-size: 22px; }
-    .popup-row{ font-size: 17px; padding: 15px 2px; }
-    .popup-row .tier{ font-size: 16.5px; }
-    .popup-row .pname{ font-size: 17.5px; }
-    .popup-row.grand .pname{ font-size: 24px; }
-    .popup-row.grand .tier{ font-size: 18px; }
+    .popup-eyebrow{ font-size: 14px; }
+    .grand-name{ font-size: 52px; }
+    .grand-tier{ font-size: 14px; }
+    .badge-label{ font-size: 12px; }
+    .badge-value{ font-size: 16.5px; }
     .popup-link{ max-width: 320px; }
   }
 </style>
@@ -758,14 +753,24 @@
     <span class="spark dot" style="left:92%; top:42%; width:4px; height:4px;"></span>
     <div class="trophy">🏆</div>
   </div>
-  <div class="popup-eyebrow">제1회 고운숨결 문학상</div>
-  <div class="popup-divider"><span class="line"></span><span class="mark">◆</span><span class="line"></span></div>
-  <h3 class="popup-title">수상자 발표</h3>
-  <div class="popup-body">
-    <div class="popup-row grand"><span class="tier">🏆 대상</span><span class="pname">박현주</span></div>
-    <div class="popup-row"><span class="tier">최우수상</span><span class="pname">이승형</span></div>
-    <div class="popup-row"><span class="tier">우수상</span><span class="pname">정미숙 · 남원장</span></div>
-    <div class="popup-row"><span class="tier">장려상</span><span class="pname">석기철 · 이진백 · 권승훈<br>김이련 · 하웅</span></div>
+  <div class="popup-eyebrow">제1회 고운숨결 문학상<br>수상자 발표</div>
+  <div class="popup-grand">
+    <div class="grand-tier">🏆 대 상</div>
+    <div class="grand-name">박현주</div>
+  </div>
+  <div class="popup-badges">
+    <div class="badge">
+      <div class="badge-label">최우수상</div>
+      <div class="badge-value">이승형</div>
+    </div>
+    <div class="badge">
+      <div class="badge-label">우수상</div>
+      <div class="badge-value">정미숙<br>남원장</div>
+    </div>
+    <div class="badge">
+      <div class="badge-label">장려상</div>
+      <div class="badge-value">5명</div>
+    </div>
   </div>
   <a href="#notice" class="btn btn-primary popup-link" onclick="closeWinnerPopup()">수상작 자세히 보기</a>
   <label class="popup-dismiss"><input type="checkbox" id="popupDismissToday"> 오늘 하루 보지 않기</label>
