@@ -350,16 +350,29 @@
   }
   .popup-overlay.show{ opacity:1; pointer-events:auto; }
   .popup-modal{
-    position: fixed; left:50%; top:50%; z-index: 72;
+    --gold: #d9a94c;
+    --gold-bright: #f6cd7a;
+    --cream: #f2e4c8;
+    --muted: #c9b48c;
+    --card-line: rgba(217,169,76,0.3);
+    position: fixed; left:50%; top:50%; z-index: 72; overflow:hidden;
     width: 88%; max-width: 380px;
     transform: translate(-50%, -46%) scale(0.96);
     background:
-      radial-gradient(ellipse at 50% -10%, rgba(201,162,74,0.18), transparent 55%),
-      linear-gradient(180deg, #ecdfbf, #cab48c);
+      radial-gradient(ellipse 140% 50% at 50% -4%, rgba(255,205,110,0.4), transparent 60%),
+      radial-gradient(ellipse 100% 40% at 50% 102%, rgba(0,0,0,0.5), transparent 70%),
+      linear-gradient(180deg, #2f1f0e, #120b04);
     border: 1px solid var(--gold);
     padding: 42px 26px 28px;
     opacity:0; pointer-events:none;
     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.22,.61,.36,1);
+  }
+  .popup-modal::after{
+    content:''; position:absolute; top:-30%; left:50%; width:220%; height:140%;
+    transform: translateX(-50%);
+    background: repeating-conic-gradient(from 250deg at 50% 0%,
+      transparent 0deg 6deg, rgba(255,222,160,0.07) 6deg 8deg, transparent 8deg 18deg);
+    pointer-events:none; z-index:0;
   }
   .popup-modal.show{
     opacity:1; pointer-events:auto; transform: translate(-50%, -50%) scale(1);
@@ -385,25 +398,21 @@
     font-size: 18px; color: #f0c868; line-height:1; cursor:pointer; padding: 0;
   }
   .popup-stage{
-    position:relative; z-index:1; margin: -42px -26px 22px; height: 150px; overflow:hidden;
-    background:
-      radial-gradient(ellipse at 50% 38%, rgba(255,214,120,0.55), transparent 62%),
-      linear-gradient(180deg, #14100a, #030201);
+    position:relative; z-index:1; margin: -42px -26px 16px; height: 130px;
+    background: radial-gradient(ellipse at 50% 55%, rgba(255,214,120,0.5), transparent 68%);
   }
-  .popup-stage .curtain{
-    position:absolute; top:0; bottom:0; width:30%;
-    background: repeating-linear-gradient(100deg, #231810 0 10px, #140d08 10px 20px);
-    box-shadow: inset 0 0 36px rgba(0,0,0,0.65);
-  }
-  .popup-stage .curtain.l{ left:0; }
-  .popup-stage .curtain.r{ right:0; transform: scaleX(-1); }
+  .popup-stage .curtain{ display:none; }
   .popup-stage .trophy{
-    position:absolute; left:50%; top:60%; transform: translate(-50%,-50%);
-    font-size: 50px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+    position:absolute; left:50%; top:62%; transform: translate(-50%,-50%);
+    font-size: 54px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
   }
   .popup-stage .spark{
-    position:absolute; width: 5px; height: 9px; background: var(--gold);
+    position:absolute; width: 5px; height: 9px; background: var(--gold-bright);
     border-radius: 1px; opacity:0.9;
+  }
+  .popup-stage .spark.dot{
+    width: 6px; height:6px; border-radius:50%; filter: blur(0.5px);
+    box-shadow: 0 0 6px 1px rgba(255,214,120,0.7);
   }
   .popup-eyebrow{
     position:relative; z-index:2; font-family:'Noto Serif KR'; font-weight:900;
@@ -741,6 +750,12 @@
     <span class="spark" style="left:88%; top:26%; transform:rotate(-30deg); background:var(--gold-bright);"></span>
     <span class="spark" style="left:46%; top:12%; transform:rotate(6deg);"></span>
     <span class="spark" style="left:58%; top:62%; transform:rotate(-16deg); background:var(--gold-bright);"></span>
+    <span class="spark dot" style="left:16%; top:40%; width:4px; height:4px;"></span>
+    <span class="spark dot" style="left:36%; top:70%; width:7px; height:7px;"></span>
+    <span class="spark dot" style="left:64%; top:36%; width:3px; height:3px;"></span>
+    <span class="spark dot" style="left:84%; top:66%; width:5px; height:5px;"></span>
+    <span class="spark dot" style="left:8%; top:68%; width:5px; height:5px;"></span>
+    <span class="spark dot" style="left:92%; top:42%; width:4px; height:4px;"></span>
     <div class="trophy">🏆</div>
   </div>
   <div class="popup-eyebrow">제1회 고운숨결 문학상</div>
