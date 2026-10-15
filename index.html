@@ -415,9 +415,9 @@
     box-shadow: 0 0 6px 1px rgba(255,214,120,0.7);
   }
   .popup-eyebrow{
-    position:relative; z-index:2; font-family:'Noto Sans KR'; font-weight:700;
-    font-size: 12.5px; letter-spacing:0.22em; color: var(--muted); text-align:center;
-    line-height:1.9;
+    position:relative; z-index:2; font-family:'Noto Sans KR'; font-weight:800;
+    font-size: 16px; letter-spacing:0.16em; color: var(--muted); text-align:center;
+    line-height:1.8;
   }
   .popup-grand{
     position:relative; z-index:2; text-align:center; margin: 10px 0 22px;
@@ -449,6 +449,7 @@
     font-family:'Noto Serif KR'; font-weight:800; font-size:14.5px; color: var(--gold-bright);
     line-height:1.35;
   }
+  .badge-value.small{ font-size:10.5px; line-height:1.55; }
   .popup-link{ position:relative; z-index:2; display:block; margin: 24px auto 0; }
   .popup-dismiss{
     position:relative; z-index:2;
@@ -716,11 +717,12 @@
     }
     .popup-stage{ margin: -54px -44px 22px; height: 190px; }
     .popup-stage .trophy{ font-size: 64px; }
-    .popup-eyebrow{ font-size: 14px; }
+    .popup-eyebrow{ font-size: 19px; }
     .grand-name{ font-size: 52px; }
     .grand-tier{ font-size: 14px; }
     .badge-label{ font-size: 12px; }
     .badge-value{ font-size: 16.5px; }
+    .badge-value.small{ font-size: 12.5px; }
     .popup-link{ max-width: 320px; }
   }
 </style>
@@ -772,7 +774,7 @@
     <div class="badge">
       <div class="badge-stars">★ ★ ★</div>
       <div class="badge-label">장려상</div>
-      <div class="badge-value">5명</div>
+      <div class="badge-value small">석기철·이진백<br>권승훈·김이련<br>하웅</div>
     </div>
   </div>
   <a href="#notice" class="btn btn-primary popup-link" onclick="closeWinnerPopup()">수상작 자세히 보기</a>
