@@ -20,14 +20,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0a1a34;
-    --bg-soft: #112a52;
-    --card: #14305c;
-    --card-line: rgba(212,175,55,0.35);
-    --gold: #c9a24a;
-    --gold-bright: #f0c868;
-    --cream: #f5efe0;
-    --muted: #a9b8d6;
+    --bg: #faf6ec;
+    --bg-soft: #f3e9d3;
+    --card: #ffffff;
+    --card-line: rgba(168,124,40,0.28);
+    --gold: #b3872f;
+    --gold-bright: #8a5f22;
+    --cream: #2e2414;
+    --muted: #8a7a5e;
     --ember: #c1573c;
     --ember-bright: #e0794f;
   }
@@ -60,7 +60,7 @@
   .topnav{
     position: fixed; top:0; left:0; right:0; z-index: 50;
     display:flex; align-items:center; justify-content:space-between;
-    padding: 14px 20px; background: rgba(10,26,52,0.82);
+    padding: 14px 20px; background: rgba(250,246,236,0.78);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--card-line);
   }
@@ -85,7 +85,7 @@
   .menu-btn.open span:nth-child(3){ transform: translateY(-10px) rotate(-45deg); }
 
   .nav-overlay{
-    position: fixed; inset:0; z-index: 45; background: rgba(4,10,22,0.5);
+    position: fixed; inset:0; z-index: 45; background: rgba(40,30,15,0.35);
     opacity:0; pointer-events:none; transition: opacity 0.35s ease;
   }
   .nav-overlay.show{ opacity:1; pointer-events:auto; }
@@ -93,13 +93,13 @@
   .nav-drawer{
     position: fixed; top:0; right:0; bottom:0; z-index: 48;
     width: 74%; max-width: 300px;
-    background: linear-gradient(180deg, #16305c, #0d2041);
+    background: linear-gradient(180deg, #fffdf7, #f3e8ce);
     border-left: 1px solid var(--card-line);
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(.22,.61,.36,1);
     padding: 90px 30px 40px;
     display:flex; flex-direction:column;
-    box-shadow: -20px 0 50px rgba(4,10,24,0.35);
+    box-shadow: -20px 0 50px rgba(80,60,20,0.12);
   }
   .nav-drawer.show{ transform: translateX(0); }
   .nav-drawer .nav-eyebrow{
@@ -290,7 +290,7 @@
 
   /* ---------- winners ---------- */
   .winner-card{
-    position:relative; border: 1px solid var(--card-line); background: linear-gradient(180deg, #1a3666, #102445);
+    position:relative; border: 1px solid var(--card-line); background: linear-gradient(180deg, #fffcf3, #faf1dc);
     padding: 34px 22px 26px; overflow:hidden;
   }
   .winner-card::before{
@@ -337,7 +337,7 @@
   }
   .winner-group.tier-grand .winner-row{ border-bottom-style:solid; border-bottom-color: rgba(179,135,47,0.25); }
   .winner-group.tier-grand .winner-row .wname{
-    font-size: 17px; text-shadow: 0 0 14px rgba(240,200,104,0.4);
+    font-size: 17px; text-shadow: 0 1px 1px rgba(255,255,255,0.4);
   }
   .winner-group.tier-grand .winner-row .wwork{ color: var(--gold-bright); font-weight:600; }
 
@@ -350,6 +350,10 @@
   }
   .popup-overlay.show{ opacity:1; pointer-events:auto; }
   .popup-modal{
+    --gold: #c9a24a;
+    --gold-bright: #f0c868;
+    --cream: #f5efe0;
+    --muted: #a9b8d6;
     position: fixed; left:50%; top:50%; z-index: 72;
     width: 88%; max-width: 380px;
     transform: translate(-50%, -46%) scale(0.96);
@@ -633,14 +637,14 @@
   }
   .winner-section-title{
     font-size: 21px; font-weight:900; color: var(--gold-bright);
-    text-shadow: 0 0 14px rgba(240,200,104,0.4);
+    text-shadow: 0 1px 1px rgba(255,255,255,0.4);
     letter-spacing: 0.01em;
   }
 
   /* ---------- judges ---------- */
   .judge-grid{ display:flex; flex-direction:column; gap: 12px; margin-top: 4px; }
   .judge-card{
-    border: 1px solid var(--card-line); background: linear-gradient(180deg, #1a3666, #102445);
+    border: 1px solid var(--card-line); background: linear-gradient(180deg, #fffcf3, #faf1dc);
     padding: 18px 20px;
   }
   .judge-name{
@@ -661,7 +665,7 @@
   .footer-contact{ font-size: 13px; color: var(--muted); line-height:2.1; }
   .footer-contact b{ color: var(--cream); font-weight:500; }
   .feather{ margin: 30px auto 0; opacity:0.55; width:26px; }
-  .footer-fine{ margin-top: 26px; font-size: 11px; color: #7f93b8; letter-spacing:0.04em; }
+  .footer-fine{ margin-top: 26px; font-size: 11px; color: #6b5f49; letter-spacing:0.04em; }
 
   /* ---------- responsive (tablet) ---------- */
   @media (min-width: 640px){
