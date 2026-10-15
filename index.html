@@ -441,22 +441,22 @@
     position:relative; z-index:2; display:flex; gap:8px; margin: 6px 0 4px;
   }
   .badge{
-    flex:1; text-align:center; padding: 20px 4px 14px; position:relative;
+    flex:1; text-align:center; padding: 30px 6px 24px; position:relative;
     border: 1px solid var(--gold); background: linear-gradient(180deg, rgba(217,169,76,0.14), rgba(0,0,0,0.25));
-    clip-path: polygon(50% 0%, 100% 16%, 100% 68%, 50% 100%, 0% 68%, 0% 16%);
+    clip-path: polygon(50% 0%, 100% 9%, 100% 78%, 50% 100%, 0% 78%, 0% 9%);
   }
   .badge-stars{
-    font-size:8px; letter-spacing:2px; color: var(--gold); opacity:0.8; margin-bottom:6px;
+    font-size:9px; letter-spacing:2px; color: var(--gold); opacity:0.8; margin-bottom:8px;
   }
   .badge-label{
-    font-family:'Noto Sans KR'; font-weight:700; font-size:11px; letter-spacing:0.03em;
-    color: var(--muted); margin-bottom:6px;
+    font-family:'Noto Sans KR'; font-weight:700; font-size:12px; letter-spacing:0.03em;
+    color: var(--muted); margin-bottom:8px;
   }
   .badge-value{
-    font-family:'Noto Serif KR'; font-weight:800; font-size:14.5px; color: var(--gold-bright);
-    line-height:1.35;
+    font-family:'Noto Serif KR'; font-weight:800; font-size:15.5px; color: var(--gold-bright);
+    line-height:1.4;
   }
-  .badge-value.small{ font-size:10.5px; line-height:1.55; }
+  .badge-value.small{ font-size:13px; line-height:1.7; }
   .popup-link{ position:relative; z-index:2; display:block; margin: 24px auto 0; }
   .popup-dismiss{
     position:relative; z-index:2;
@@ -727,9 +727,10 @@
     .popup-eyebrow{ font-size: 23px; }
     .popup-grand-name{ font-size: 52px; }
     .popup-grand-tier{ font-size: 14px; }
-    .badge-label{ font-size: 12px; }
-    .badge-value{ font-size: 16.5px; }
-    .badge-value.small{ font-size: 12.5px; }
+    .badge{ padding: 36px 8px 28px; }
+    .badge-label{ font-size: 14px; }
+    .badge-value{ font-size: 18px; }
+    .badge-value.small{ font-size: 15px; }
     .popup-link{ max-width: 320px; }
   }
 </style>
