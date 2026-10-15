@@ -431,15 +431,15 @@
     text-shadow: 0 0 22px rgba(246,205,122,0.55); line-height:1.2;
   }
   .popup-badges{
-    position:relative; z-index:2; display:flex; gap:8px; margin: 0 0 4px;
+    position:relative; z-index:2; display:flex; gap:8px; margin: 6px 0 4px;
   }
   .badge{
-    flex:1; text-align:center; padding: 14px 4px 12px; position:relative;
-    border: 1px solid var(--card-line); background: rgba(217,169,76,0.07);
+    flex:1; text-align:center; padding: 20px 4px 14px; position:relative;
+    border: 1px solid var(--gold); background: linear-gradient(180deg, rgba(217,169,76,0.14), rgba(0,0,0,0.25));
+    clip-path: polygon(50% 0%, 100% 16%, 100% 68%, 50% 100%, 0% 68%, 0% 16%);
   }
-  .badge::before{
-    content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
-    width:22px; height:2px; background: var(--gold); opacity:0.55;
+  .badge-stars{
+    font-size:8px; letter-spacing:2px; color: var(--gold); opacity:0.8; margin-bottom:6px;
   }
   .badge-label{
     font-family:'Noto Sans KR'; font-weight:700; font-size:11px; letter-spacing:0.03em;
@@ -760,14 +760,17 @@
   </div>
   <div class="popup-badges">
     <div class="badge">
+      <div class="badge-stars">★ ★ ★</div>
       <div class="badge-label">최우수상</div>
       <div class="badge-value">이승형</div>
     </div>
     <div class="badge">
+      <div class="badge-stars">★ ★ ★</div>
       <div class="badge-label">우수상</div>
       <div class="badge-value">정미숙<br>남원장</div>
     </div>
     <div class="badge">
+      <div class="badge-stars">★ ★ ★</div>
       <div class="badge-label">장려상</div>
       <div class="badge-value">5명</div>
     </div>
