@@ -372,11 +372,26 @@
     background: rgba(255,255,255,0.65); border: 1px solid var(--card-line);
     font-size: 18px; color: var(--muted); line-height:1; cursor:pointer; padding: 0;
   }
-  .popup-badge{
-    width: 48px; height:48px; margin: 0 auto 12px; position:relative; z-index:2;
-    display:flex; align-items:center; justify-content:center; border-radius:50%;
-    background: linear-gradient(135deg, var(--gold-bright), var(--gold) 75%);
-    font-size: 22px; box-shadow: 0 8px 20px rgba(179,135,47,0.4);
+  .popup-stage{
+    position:relative; z-index:1; margin: -42px -26px 22px; height: 150px; overflow:hidden;
+    background:
+      radial-gradient(ellipse at 50% 38%, rgba(255,214,120,0.55), transparent 62%),
+      linear-gradient(180deg, #2a1708, #170d04);
+  }
+  .popup-stage .curtain{
+    position:absolute; top:0; bottom:0; width:30%;
+    background: repeating-linear-gradient(100deg, #5c2c13 0 10px, #4a2210 10px 20px);
+    box-shadow: inset 0 0 36px rgba(0,0,0,0.65);
+  }
+  .popup-stage .curtain.l{ left:0; }
+  .popup-stage .curtain.r{ right:0; transform: scaleX(-1); }
+  .popup-stage .trophy{
+    position:absolute; left:50%; top:60%; transform: translate(-50%,-50%);
+    font-size: 50px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+  }
+  .popup-stage .spark{
+    position:absolute; width: 5px; height: 9px; background: var(--gold);
+    border-radius: 1px; opacity:0.9;
   }
   .popup-eyebrow{
     position:relative; z-index:2; font-family:'Noto Serif KR'; font-weight:800;
@@ -670,7 +685,8 @@
     .popup-modal{
       width: 90%; max-width: 480px; padding: 54px 44px 38px;
     }
-    .popup-badge{ width: 58px; height:58px; font-size: 27px; }
+    .popup-stage{ margin: -54px -44px 22px; height: 190px; }
+    .popup-stage .trophy{ font-size: 64px; }
     .popup-title{ font-size: 30px; margin: 8px 0 26px; }
     .popup-eyebrow{ font-size: 20px; }
     .popup-row{ font-size: 14.5px; padding: 14px 2px; }
@@ -688,7 +704,19 @@
   <span class="popup-corner bl"></span>
   <span class="popup-corner br"></span>
   <button class="popup-close" onclick="closeWinnerPopup()" aria-label="닫기">&times;</button>
-  <div class="popup-badge">🏆</div>
+  <div class="popup-stage">
+    <span class="curtain l"></span>
+    <span class="curtain r"></span>
+    <span class="spark" style="left:12%; top:22%; transform:rotate(18deg);"></span>
+    <span class="spark" style="left:20%; top:55%; transform:rotate(-10deg); background:var(--gold-bright);"></span>
+    <span class="spark" style="left:30%; top:14%; transform:rotate(40deg);"></span>
+    <span class="spark" style="left:70%; top:18%; transform:rotate(-24deg); background:var(--gold-bright);"></span>
+    <span class="spark" style="left:80%; top:50%; transform:rotate(12deg);"></span>
+    <span class="spark" style="left:88%; top:26%; transform:rotate(-30deg); background:var(--gold-bright);"></span>
+    <span class="spark" style="left:46%; top:12%; transform:rotate(6deg);"></span>
+    <span class="spark" style="left:58%; top:62%; transform:rotate(-16deg); background:var(--gold-bright);"></span>
+    <div class="trophy">🏆</div>
+  </div>
   <div class="popup-eyebrow">제1회 고운숨결 문학상</div>
   <div class="popup-divider"><span class="line"></span><span class="mark">◆</span><span class="line"></span></div>
   <h3 class="popup-title">수상자 발표</h3>
