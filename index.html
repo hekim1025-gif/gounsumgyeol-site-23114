@@ -406,8 +406,8 @@
     border-radius: 1px; opacity:0.9;
   }
   .popup-eyebrow{
-    position:relative; z-index:2; font-family:'Noto Serif KR'; font-weight:800;
-    font-size: 17px; letter-spacing:0.12em; color: var(--gold-bright); text-align:center;
+    position:relative; z-index:2; font-family:'Noto Serif KR'; font-weight:900;
+    font-size: 19px; letter-spacing:0.12em; color: var(--gold-bright); text-align:center;
     text-shadow: 0 0 14px rgba(240,200,104,0.45);
   }
   .popup-divider{ display:flex; align-items:center; justify-content:center; gap:10px; margin: 10px 0 4px; position:relative; z-index:2; }
@@ -415,13 +415,13 @@
   .popup-divider .mark{ color: var(--gold); font-size: 10px; }
   .popup-title{
     position:relative; z-index:2;
-    font-family:'Noto Serif KR'; font-weight:900; font-size: 25px; color: var(--gold-bright);
+    font-family:'Noto Serif KR'; font-weight:900; font-size: 28px; color: var(--gold-bright);
     text-align:center; margin: 6px 0 22px; letter-spacing:0.01em;
   }
   .popup-body{ position:relative; z-index:2; border-top: 1px solid var(--card-line); }
   .popup-row{
     display:flex; justify-content:space-between; align-items:baseline; gap: 10px;
-    padding: 12px 2px; border-bottom: 1px solid var(--card-line); font-size: 13px;
+    padding: 13px 2px; border-bottom: 1px solid var(--card-line); font-size: 15.5px;
   }
   .popup-row.grand{
     position:relative; overflow:hidden;
@@ -436,13 +436,13 @@
   .popup-row.grand::after{
     content:'✦'; position:absolute; top:5px; right:10px; color: var(--gold); opacity:0.6; font-size:11px;
   }
-  .popup-row.grand .tier{ font-family:'Noto Serif KR'; font-weight:700; font-size:14.5px; }
+  .popup-row.grand .tier{ font-family:'Noto Serif KR'; font-weight:800; font-size:16.5px; }
   .popup-row.grand .pname{
-    font-family:'Noto Serif KR'; font-weight:800; font-size:19px; color: var(--gold-bright);
+    font-family:'Noto Serif KR'; font-weight:900; font-size:21px; color: var(--gold-bright);
     text-shadow: 0 0 14px rgba(240,200,104,0.4);
   }
-  .popup-row .tier{ color: var(--gold-bright); font-weight:600; flex-shrink:0; }
-  .popup-row .pname{ color: var(--cream); text-align:right; }
+  .popup-row .tier{ color: var(--gold-bright); font-weight:800; flex-shrink:0; font-size:15px; }
+  .popup-row .pname{ color: var(--cream); text-align:right; font-weight:700; font-size:16px; }
   .popup-link{ position:relative; z-index:2; display:block; margin: 22px auto 0; }
   .popup-dismiss{
     position:relative; z-index:2;
@@ -710,10 +710,13 @@
     }
     .popup-stage{ margin: -54px -44px 22px; height: 190px; }
     .popup-stage .trophy{ font-size: 64px; }
-    .popup-title{ font-size: 30px; margin: 8px 0 26px; }
-    .popup-eyebrow{ font-size: 20px; }
-    .popup-row{ font-size: 14.5px; padding: 14px 2px; }
-    .popup-row.grand .pname{ font-size: 18px; }
+    .popup-title{ font-size: 34px; margin: 8px 0 26px; }
+    .popup-eyebrow{ font-size: 22px; }
+    .popup-row{ font-size: 17px; padding: 15px 2px; }
+    .popup-row .tier{ font-size: 16.5px; }
+    .popup-row .pname{ font-size: 17.5px; }
+    .popup-row.grand .pname{ font-size: 24px; }
+    .popup-row.grand .tier{ font-size: 18px; }
     .popup-link{ max-width: 320px; }
   }
 </style>
