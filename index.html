@@ -378,7 +378,11 @@
     background: linear-gradient(135deg, var(--gold-bright), var(--gold) 75%);
     font-size: 22px; box-shadow: 0 8px 20px rgba(179,135,47,0.4);
   }
-  .popup-eyebrow{ position:relative; z-index:2; font-size: 11px; letter-spacing:0.25em; color: var(--gold-bright); text-align:center; }
+  .popup-eyebrow{
+    position:relative; z-index:2; font-family:'Noto Serif KR'; font-weight:800;
+    font-size: 17px; letter-spacing:0.12em; color: var(--gold-bright); text-align:center;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+  }
   .popup-divider{ display:flex; align-items:center; justify-content:center; gap:10px; margin: 10px 0 4px; position:relative; z-index:2; }
   .popup-divider .line{ width:26px; height:1px; background: var(--gold); opacity:0.55; }
   .popup-divider .mark{ color: var(--gold); font-size: 10px; }
@@ -589,6 +593,11 @@
     font-family:'Noto Serif KR'; font-weight:600; font-size: 15px; color: var(--cream);
     margin: 30px 0 10px;
   }
+  .winner-section-title{
+    font-size: 21px; font-weight:900; color: var(--gold-bright);
+    text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+    letter-spacing: 0.01em;
+  }
 
   /* ---------- judges ---------- */
   .judge-grid{ display:flex; flex-direction:column; gap: 12px; margin-top: 4px; }
@@ -663,7 +672,7 @@
     }
     .popup-badge{ width: 58px; height:58px; font-size: 27px; }
     .popup-title{ font-size: 30px; margin: 8px 0 26px; }
-    .popup-eyebrow{ font-size: 12.5px; }
+    .popup-eyebrow{ font-size: 20px; }
     .popup-row{ font-size: 14.5px; padding: 14px 2px; }
     .popup-row.grand .pname{ font-size: 18px; }
     .popup-link{ max-width: 320px; }
@@ -1033,7 +1042,7 @@
     </div>
 
     <div id="winnerResults" hidden>
-      <h3 class="sub-block-title reveal">제1회 고운숨결 문학상 수상자</h3>
+      <h3 class="sub-block-title winner-section-title reveal">제1회 고운숨결 문학상 수상자</h3>
       <div class="winner-card reveal winner-block">
         <span class="winner-card-corner tl"></span>
         <span class="winner-card-corner tr"></span>
