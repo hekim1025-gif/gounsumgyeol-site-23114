@@ -901,11 +901,13 @@
       수상작 발표는 <b style="color:var(--gold-bright)">2026.10.21(수)</b>입니다. 상금은 관련 세법에 따라 제세공과금을 원천징수한 후 지급하며, 세무처리는 최종 확정된 운영규정에 따릅니다.
     </div>
 
-    <h3 class="sub-block-title reveal">시상식 안내</h3>
-    <div class="spec-row reveal"><span class="name">일시</span><span class="val" style="color:var(--gold-bright); font-weight:700;">2026.10.28(수) 오후 6시</span></div>
-    <div class="spec-row reveal" style="border-bottom:none;"><span class="name">장소</span><span class="val" style="color:var(--gold-bright); font-weight:700;">조선 팰리스 호텔 서울 강남 4층 로얄챔버룸</span></div>
-    <div class="notice-box reveal" style="margin-top:16px;">
-      대상·최우수상·우수상 수상자는 주최 측이 납득할 만한 특별한 사유 없이 시상식에 불참할 경우 수상이 취소될 수 있습니다.
+    <div id="ceremonyInfoJudge" hidden>
+      <h3 class="sub-block-title reveal">시상식 안내</h3>
+      <div class="spec-row reveal"><span class="name">일시</span><span class="val" style="color:var(--gold-bright); font-weight:700;">2026.10.28(수) 오후 6시</span></div>
+      <div class="spec-row reveal" style="border-bottom:none;"><span class="name">장소</span><span class="val" style="color:var(--gold-bright); font-weight:700;">조선 팰리스 호텔 서울 강남 4층 로얄챔버룸</span></div>
+      <div class="notice-box reveal" style="margin-top:16px;">
+        대상·최우수상·우수상 수상자는 주최 측이 납득할 만한 특별한 사유 없이 시상식에 불참할 경우 수상이 취소될 수 있습니다.
+      </div>
     </div>
 
     <h3 class="sub-block-title reveal">심사 기준</h3>
@@ -1240,9 +1242,11 @@
       const pending = document.getElementById('winnerPending');
       const results = document.getElementById('winnerResults');
       const noticeRow = document.getElementById('noticeWinnerRow');
+      const ceremonyJudge = document.getElementById('ceremonyInfoJudge');
       if(pending) pending.hidden = true;
       if(results) results.hidden = false;
       if(noticeRow) noticeRow.hidden = false;
+      if(ceremonyJudge) ceremonyJudge.hidden = false;
       window.dispatchEvent(new Event('winnersRevealed'));
     }
     function scheduleCheck(){
