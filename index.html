@@ -656,11 +656,18 @@
     <div class="video-modal-frame">
       <iframe id="highlightVideoFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
+    <label class="popup-dismiss" style="color: var(--muted);"><input type="checkbox" id="videoDismissToday"> 오늘 하루 보지 않기</label>
+  </div>
+</div>
+
+<div class="video-modal-overlay" id="ceremonyPhotoOverlay" onclick="if(event.target===this) closeCeremonyPhoto();">
+  <div class="video-modal">
+    <button class="video-modal-close" onclick="closeCeremonyPhoto()" aria-label="닫기">&times;</button>
+    <div class="video-modal-title">제1회 고운숨결 문학상 시상식 단체사진</div>
     <div class="video-modal-photo">
       <img src="images/ceremony-photo.jpg" alt="제1회 고운숨결 문학상 시상식 수상자 단체사진" loading="lazy">
       <div class="video-modal-photo-caption">제1회 고운숨결 문학상 시상식 수상자 단체사진</div>
     </div>
-    <label class="popup-dismiss" style="color: var(--muted);"><input type="checkbox" id="videoDismissToday"> 오늘 하루 보지 않기</label>
   </div>
 </div>
 
@@ -1001,7 +1008,7 @@
       </div>
     </div>
 
-    <div class="ceremony-photo-wrap reveal">
+    <div class="ceremony-photo-wrap reveal" onclick="openCeremonyPhoto()" style="cursor:pointer;">
       <img src="images/ceremony-photo.jpg" alt="제1회 고운숨결 문학상 시상식 수상자 단체사진" loading="lazy">
       <div class="ceremony-photo-caption">제1회 고운숨결 문학상 시상식 수상자 단체사진</div>
     </div>
@@ -1050,7 +1057,7 @@
         </div>
       </div>
 
-      <div class="ceremony-photo-wrap reveal">
+      <div class="ceremony-photo-wrap reveal" onclick="openCeremonyPhoto()" style="cursor:pointer;">
         <img src="images/ceremony-photo.jpg" alt="제1회 고운숨결 문학상 시상식 수상자 단체사진" loading="lazy">
         <div class="ceremony-photo-caption">제1회 고운숨결 문학상 시상식 수상자 단체사진</div>
       </div>
@@ -1190,6 +1197,17 @@
       window.openHighlightVideo();
     }
     setTimeout(autoOpen, 500);
+  })();
+
+  // ceremony photo popup
+  (function(){
+    const overlay = document.getElementById('ceremonyPhotoOverlay');
+    window.openCeremonyPhoto = function(){
+      overlay.classList.add('show');
+    };
+    window.closeCeremonyPhoto = function(){
+      overlay.classList.remove('show');
+    };
   })();
 </script>
 
