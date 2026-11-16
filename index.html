@@ -665,6 +665,14 @@
     text-shadow: 0 1px 1px rgba(255,255,255,0.4);
     letter-spacing: 0.01em;
   }
+  .ceremony-photo-wrap{ margin: 18px 0 0; }
+  .ceremony-photo-wrap img{
+    display:block; width:100%; height:auto; border: 1px solid var(--gold);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  }
+  .ceremony-photo-caption{
+    text-align:center; font-size: 12px; color: var(--muted); margin-top: 10px;
+  }
 
   /* ---------- judges ---------- */
   .judge-grid{ display:flex; flex-direction:column; gap: 12px; margin-top: 4px; }
@@ -1193,6 +1201,11 @@
           <div class="winner-row"><span class="wname">김이련</span><span class="wwork">문을 열고 다시 우리의 호흡으로</span></div>
           <div class="winner-row"><span class="wname">하웅</span><span class="wwork">내가 상처받은 것만 기억하고 있었다</span></div>
         </div>
+      </div>
+
+      <div class="ceremony-photo-wrap reveal">
+        <img src="images/ceremony-photo.jpg" alt="제1회 고운숨결 문학상 시상식 수상자 단체사진" loading="lazy">
+        <div class="ceremony-photo-caption">제1회 고운숨결 문학상 시상식 수상자 단체사진</div>
       </div>
 
       <h3 class="sub-block-title reveal">시상식 안내</h3>
