@@ -656,7 +656,11 @@
     <div class="video-modal-frame">
       <iframe id="highlightVideoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-    <label class="popup-dismiss" style="color: var(--muted);"><input type="checkbox" id="videoDismissToday"> 오늘 하루 보지 않기</label>
+    <div class="popup-dismiss" style="color: var(--muted); margin-top:14px;">
+      <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" id="videoDismissToday"> 오늘 하루 보지 않기</label>
+      <span style="opacity:0.5;">|</span>
+      <span style="cursor:pointer; text-decoration:underline;" onclick="closeHighlightVideo()">닫기</span>
+    </div>
   </div>
 </div>
 
