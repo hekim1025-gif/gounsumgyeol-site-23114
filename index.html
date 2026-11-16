@@ -331,119 +331,7 @@
   }
   .winner-group.tier-grand .winner-row .wwork{ color: var(--gold-bright); font-weight:600; }
 
-  /* ---------- winner popup ---------- */
-  .popup-overlay{
-    position: fixed; inset:0; z-index: 70;
-    background: radial-gradient(ellipse at center, rgba(10,22,46,0.6), rgba(2,6,16,0.85));
-    opacity:0; pointer-events:none; transition: opacity 0.4s ease;
-    backdrop-filter: blur(2px);
-  }
-  .popup-overlay.show{ opacity:1; pointer-events:auto; }
-  .popup-modal{
-    --gold: #d9a94c;
-    --gold-bright: #f6cd7a;
-    --cream: #f2e4c8;
-    --muted: #c9b48c;
-    --card-line: rgba(217,169,76,0.3);
-    position: fixed; left:50%; top:50%; z-index: 72; overflow:hidden;
-    width: 88%; max-width: 380px;
-    transform: translate(-50%, -46%) scale(0.96);
-    background:
-      radial-gradient(ellipse 140% 50% at 50% -4%, rgba(255,205,110,0.4), transparent 60%),
-      radial-gradient(ellipse 100% 40% at 50% 102%, rgba(0,0,0,0.5), transparent 70%),
-      linear-gradient(180deg, #2f1f0e, #120b04);
-    border: 1px solid var(--gold);
-    padding: 42px 26px 28px;
-    opacity:0; pointer-events:none;
-    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.22,.61,.36,1);
-  }
-  .popup-modal::after{
-    content:''; position:absolute; top:-30%; left:50%; width:220%; height:140%;
-    transform: translateX(-50%);
-    background: repeating-conic-gradient(from 250deg at 50% 0%,
-      transparent 0deg 6deg, rgba(255,222,160,0.07) 6deg 8deg, transparent 8deg 18deg);
-    pointer-events:none; z-index:0;
-  }
-  .popup-modal.show{
-    opacity:1; pointer-events:auto; transform: translate(-50%, -50%) scale(1);
-    animation: popupGlow 2.8s ease-in-out 0.4s infinite;
-  }
-  @keyframes popupGlow{
-    0%,100%{ box-shadow: 0 30px 80px rgba(50,35,10,0.45), 0 0 0 1px rgba(201,162,74,0.18), 0 0 26px rgba(201,162,74,0.22); }
-    50%{ box-shadow: 0 30px 80px rgba(50,35,10,0.45), 0 0 0 1px rgba(201,162,74,0.3), 0 0 48px rgba(201,162,74,0.4); }
-  }
-  .popup-modal::before{
-    content:''; position:absolute; inset: 7px;
-    border: 1px solid rgba(179,135,47,0.35); pointer-events:none;
-  }
-  .popup-corner{ position:absolute; width: 18px; height:18px; border: 1px solid var(--gold); opacity:0.85; pointer-events:none; }
-  .popup-corner.tl{ top:7px; left:7px; border-right:none; border-bottom:none; }
-  .popup-corner.tr{ top:7px; right:7px; border-left:none; border-bottom:none; }
-  .popup-corner.bl{ bottom:7px; left:7px; border-right:none; border-top:none; }
-  .popup-corner.br{ bottom:7px; right:7px; border-left:none; border-top:none; }
-  .popup-close{
-    position:absolute; top:12px; right:12px; width: 28px; height:28px; z-index:3;
-    display:flex; align-items:center; justify-content:center; border-radius:50%;
-    background: rgba(0,0,0,0.4); border: 1px solid rgba(240,200,104,0.4);
-    font-size: 18px; color: #f0c868; line-height:1; cursor:pointer; padding: 0;
-  }
-  .popup-stage{
-    position:relative; z-index:1; margin: -42px -26px 16px; height: 130px;
-    background: radial-gradient(ellipse at 50% 55%, rgba(255,214,120,0.5), transparent 68%);
-  }
-  .popup-stage .curtain{ display:none; }
-  .popup-stage .trophy{
-    position:absolute; left:50%; top:62%; transform: translate(-50%,-50%);
-    font-size: 54px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
-  }
-  .popup-stage .spark{
-    position:absolute; width: 5px; height: 9px; background: var(--gold-bright);
-    border-radius: 1px; opacity:0.9;
-  }
-  .popup-stage .spark.dot{
-    width: 6px; height:6px; border-radius:50%; filter: blur(0.5px);
-    box-shadow: 0 0 6px 1px rgba(255,214,120,0.7);
-  }
-  .popup-eyebrow{
-    position:relative; z-index:2; font-family:'Noto Sans KR'; font-weight:800;
-    font-size: 19px; letter-spacing:0.14em; color: var(--muted); text-align:center;
-    line-height:1.8;
-  }
-  .popup-grand{
-    position:relative; z-index:2; margin: 16px 0 22px;
-  }
-  .popup-grand-inner{
-    text-align:center; padding: 0;
-  }
-  .popup-grand-tier{
-    font-family:'Noto Serif KR'; font-weight:800; font-size:19px;
-    letter-spacing:0.15em; color: var(--gold); margin-bottom:12px;
-  }
-  .popup-grand-name{
-    font-family:'Noto Serif KR'; font-weight:900; font-size:40px; color: var(--gold-bright);
-    text-shadow: 0 0 22px rgba(246,205,122,0.55); line-height:1.2;
-  }
-  .popup-badges{
-    position:relative; z-index:2; display:flex; gap:8px; margin: 6px 0 4px;
-  }
-  .badge{
-    flex:1; text-align:center; padding: 30px 6px 24px; position:relative;
-    border: 1px solid var(--gold); background: linear-gradient(180deg, rgba(217,169,76,0.14), rgba(0,0,0,0.25));
-    clip-path: polygon(50% 0%, 100% 9%, 100% 78%, 50% 100%, 0% 78%, 0% 9%);
-  }
-  .badge-stars{
-    font-size:9px; letter-spacing:2px; color: var(--gold); opacity:0.8; margin-bottom:8px;
-  }
-  .badge-label{
-    font-family:'Noto Sans KR'; font-weight:700; font-size:12px; letter-spacing:0.03em;
-    color: var(--muted); margin-bottom:8px;
-  }
-  .badge-value{
-    font-family:'Noto Serif KR'; font-weight:800; font-size:15.5px; color: var(--gold-bright);
-    line-height:1.4;
-  }
-  .badge-value.small{ font-size:13px; line-height:1.7; }
-  .popup-link{ position:relative; z-index:2; display:block; margin: 24px auto 0; }
+  /* ---------- video modal dismiss ---------- */
   .popup-dismiss{
     position:relative; z-index:2;
     display:flex; align-items:center; gap:6px; justify-content:center;
@@ -452,6 +340,10 @@
 
   /* ---------- video modal ---------- */
   .video-modal-overlay{
+    --gold: #d9a94c;
+    --gold-bright: #f6cd7a;
+    --cream: #f2e4c8;
+    --muted: #c9b48c;
     position: fixed; inset:0; z-index: 90;
     background: rgba(5,8,14,0.88);
     opacity:0; pointer-events:none; transition: opacity 0.3s ease;
@@ -459,7 +351,7 @@
   }
   .video-modal-overlay.show{ opacity:1; pointer-events:auto; }
   .video-modal{
-    position:relative; width:100%; max-width: 900px;
+    position:relative; width:100%; max-width: 900px; max-height: 90vh; overflow-y:auto;
     transform: scale(0.96); opacity:0; transition: opacity 0.3s ease, transform 0.3s ease;
   }
   .video-modal-overlay.show .video-modal{ transform: scale(1); opacity:1; }
@@ -477,6 +369,14 @@
     display:flex; align-items:center; justify-content:center; border-radius:50%;
     background: rgba(0,0,0,0.5); border: 1px solid rgba(240,200,104,0.5);
     font-size: 18px; color: #f0c868; line-height:1; cursor:pointer; padding:0;
+  }
+  .video-modal-photo{ margin-top: 16px; }
+  .video-modal-photo img{
+    display:block; width:100%; height:auto; border: 1px solid var(--gold);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.3);
+  }
+  .video-modal-photo-caption{
+    text-align:center; font-size: 12px; color: var(--muted); margin-top: 10px;
   }
 
   /* ---------- info grid ---------- */
@@ -743,19 +643,7 @@
     .winner-block{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 4px 36px; align-items:start; }
     .winner-group{ margin-bottom: 0; padding-bottom: 22px; }
 
-    .popup-modal{
-      width: 90%; max-width: 480px; padding: 54px 44px 38px;
-    }
-    .popup-stage{ margin: -54px -44px 22px; height: 190px; }
-    .popup-stage .trophy{ font-size: 64px; }
-    .popup-eyebrow{ font-size: 23px; }
-    .popup-grand-name{ font-size: 52px; }
-    .popup-grand-tier{ font-size: 23px; }
-    .badge{ padding: 36px 8px 28px; }
-    .badge-label{ font-size: 14px; }
-    .badge-value{ font-size: 18px; }
-    .badge-value.small{ font-size: 15px; }
-    .popup-link{ max-width: 320px; }
+    .video-modal-title{ font-size: 19px; }
   }
 </style>
 </head>
@@ -768,61 +656,12 @@
     <div class="video-modal-frame">
       <iframe id="highlightVideoFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
-  </div>
-</div>
-
-<div class="popup-overlay" id="winnerPopupOverlay"></div>
-<div class="popup-modal" id="winnerPopup">
-  <span class="popup-corner tl"></span>
-  <span class="popup-corner tr"></span>
-  <span class="popup-corner bl"></span>
-  <span class="popup-corner br"></span>
-  <button class="popup-close" onclick="closeWinnerPopup()" aria-label="닫기">&times;</button>
-  <div class="popup-stage">
-    <span class="curtain l"></span>
-    <span class="curtain r"></span>
-    <span class="spark" style="left:12%; top:22%; transform:rotate(18deg);"></span>
-    <span class="spark" style="left:20%; top:55%; transform:rotate(-10deg); background:var(--gold-bright);"></span>
-    <span class="spark" style="left:30%; top:14%; transform:rotate(40deg);"></span>
-    <span class="spark" style="left:70%; top:18%; transform:rotate(-24deg); background:var(--gold-bright);"></span>
-    <span class="spark" style="left:80%; top:50%; transform:rotate(12deg);"></span>
-    <span class="spark" style="left:88%; top:26%; transform:rotate(-30deg); background:var(--gold-bright);"></span>
-    <span class="spark" style="left:46%; top:12%; transform:rotate(6deg);"></span>
-    <span class="spark" style="left:58%; top:62%; transform:rotate(-16deg); background:var(--gold-bright);"></span>
-    <span class="spark dot" style="left:16%; top:40%; width:4px; height:4px;"></span>
-    <span class="spark dot" style="left:36%; top:70%; width:7px; height:7px;"></span>
-    <span class="spark dot" style="left:64%; top:36%; width:3px; height:3px;"></span>
-    <span class="spark dot" style="left:84%; top:66%; width:5px; height:5px;"></span>
-    <span class="spark dot" style="left:8%; top:68%; width:5px; height:5px;"></span>
-    <span class="spark dot" style="left:92%; top:42%; width:4px; height:4px;"></span>
-    <div class="trophy">🏆</div>
-  </div>
-  <div class="popup-eyebrow">제1회 고운숨결 문학상<br>수상자 발표</div>
-  <div class="popup-grand">
-    <div class="popup-grand-inner">
-      <div class="popup-grand-tier">🏆 대 상</div>
-      <div class="popup-grand-name">박현주</div>
+    <div class="video-modal-photo">
+      <img src="images/ceremony-photo.jpg" alt="제1회 고운숨결 문학상 시상식 수상자 단체사진" loading="lazy">
+      <div class="video-modal-photo-caption">제1회 고운숨결 문학상 시상식 수상자 단체사진</div>
     </div>
+    <label class="popup-dismiss" style="color: var(--muted);"><input type="checkbox" id="videoDismissToday"> 오늘 하루 보지 않기</label>
   </div>
-  <div class="popup-badges">
-    <div class="badge">
-      <div class="badge-stars">★ ★ ★</div>
-      <div class="badge-label">최우수상</div>
-      <div class="badge-value">이승형</div>
-    </div>
-    <div class="badge">
-      <div class="badge-stars">★ ★ ★</div>
-      <div class="badge-label">우수상</div>
-      <div class="badge-value">정미숙<br>남원정</div>
-    </div>
-    <div class="badge">
-      <div class="badge-stars">★ ★ ★</div>
-      <div class="badge-label">장려상</div>
-      <div class="badge-value small">석기철<br>이진백<br>권승훈<br>김이련<br>하웅</div>
-    </div>
-  </div>
-  <a href="#notice" class="btn btn-primary popup-link" onclick="closeWinnerPopup()">수상작 자세히 보기</a>
-  <label class="popup-dismiss"><input type="checkbox" id="popupDismissToday"> 오늘 하루 보지 않기</label>
 </div>
 
 <div class="frame-corner tl"></div>
@@ -1318,34 +1157,9 @@
     scheduleCheck();
   })();
 
-  // winner popup
-  (function(){
-    const KEY = 'winnerPopupHideUntil';
-    const overlay = document.getElementById('winnerPopupOverlay');
-    const modal = document.getElementById('winnerPopup');
-    function openPopup(){
-      if(!window.__winnersRevealed) return;
-      let hideUntil = 0;
-      try{ hideUntil = Number(localStorage.getItem(KEY)) || 0; }catch(e){}
-      if(Date.now() < hideUntil) return;
-      overlay.classList.add('show');
-      modal.classList.add('show');
-    }
-    window.closeWinnerPopup = function(){
-      const dismiss = document.getElementById('popupDismissToday');
-      if(dismiss && dismiss.checked){
-        try{ localStorage.setItem(KEY, Date.now() + 24*60*60*1000); }catch(e){}
-      }
-      overlay.classList.remove('show');
-      modal.classList.remove('show');
-    };
-    overlay.addEventListener('click', window.closeWinnerPopup);
-    setTimeout(openPopup, 500);
-    window.addEventListener('winnersRevealed', openPopup);
-  })();
-
   // highlight video popup
   (function(){
+    const KEY = 'highlightVideoHideUntil';
     const VIDEO_SRC = 'https://drive.google.com/file/d/1c8LUvY-e_Qk7HfHFsJDP8sMV4qXn60Ih/preview';
     const overlay = document.getElementById('highlightVideoOverlay');
     const frame = document.getElementById('highlightVideoFrame');
@@ -1354,9 +1168,20 @@
       overlay.classList.add('show');
     };
     window.closeHighlightVideo = function(){
+      const dismiss = document.getElementById('videoDismissToday');
+      if(dismiss && dismiss.checked){
+        try{ localStorage.setItem(KEY, Date.now() + 24*60*60*1000); }catch(e){}
+      }
       overlay.classList.remove('show');
       frame.src = '';
     };
+    function autoOpen(){
+      let hideUntil = 0;
+      try{ hideUntil = Number(localStorage.getItem(KEY)) || 0; }catch(e){}
+      if(Date.now() < hideUntil) return;
+      window.openHighlightVideo();
+    }
+    setTimeout(autoOpen, 500);
   })();
 </script>
 
