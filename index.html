@@ -599,6 +599,19 @@
     display:block; width:100%; height:auto; max-height: 80vh; object-fit:contain;
     border: 1px solid var(--gold); box-shadow: 0 30px 80px rgba(0,0,0,0.6);
   }
+  .gallery-lightbox-nav{
+    position:absolute; top:50%; transform: translateY(-50%); z-index:3;
+    width: 40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: rgba(0,0,0,0.5); border: 1px solid rgba(240,200,104,0.5);
+    font-size: 16px; color: #f0c868; cursor:pointer; padding:0;
+  }
+  .gallery-lightbox-nav.prev{ left: -14px; }
+  .gallery-lightbox-nav.next{ right: -14px; }
+  @media (max-width: 640px){
+    .gallery-lightbox-nav.prev{ left: 6px; }
+    .gallery-lightbox-nav.next{ right: 6px; }
+  }
   .shorts-modal-frame{
     position:relative; width:100%; max-width: 360px; margin: 0 auto;
     height:0; padding-bottom: 177.78%; background:#000;
@@ -701,7 +714,9 @@
 <div class="video-modal-overlay" id="galleryLightboxOverlay" onclick="if(event.target===this) closeGalleryImage();">
   <div class="video-modal" style="max-width: 1000px;">
     <button class="video-modal-close" onclick="closeGalleryImage()" aria-label="닫기">&times;</button>
+    <button class="gallery-lightbox-nav prev" onclick="event.stopPropagation(); prevGalleryImage();" aria-label="이전 사진">&#10094;</button>
     <img class="gallery-lightbox-img" id="galleryLightboxImg" src="" alt="제1회 고운숨결 문학상 시상식">
+    <button class="gallery-lightbox-nav next" onclick="event.stopPropagation(); nextGalleryImage();" aria-label="다음 사진">&#10095;</button>
   </div>
 </div>
 
@@ -1330,14 +1345,28 @@
   (function(){
     const overlay = document.getElementById('galleryLightboxOverlay');
     const img = document.getElementById('galleryLightboxImg');
+    const photos = Array.from(document.querySelectorAll('.gallery-item:not(.video) img')).map(el => el.getAttribute('src'));
+    let currentIndex = -1;
+    function show(index){
+      currentIndex = (index + photos.length) % photos.length;
+      img.src = photos[currentIndex];
+    }
     window.openGalleryImage = function(src){
-      img.src = src;
+      show(photos.indexOf(src));
       overlay.classList.add('show');
     };
+    window.nextGalleryImage = function(){ show(currentIndex + 1); };
+    window.prevGalleryImage = function(){ show(currentIndex - 1); };
     window.closeGalleryImage = function(){
       overlay.classList.remove('show');
       img.src = '';
     };
+    window.addEventListener('keydown', function(e){
+      if(!overlay.classList.contains('show')) return;
+      if(e.key === 'ArrowRight') window.nextGalleryImage();
+      if(e.key === 'ArrowLeft') window.prevGalleryImage();
+      if(e.key === 'Escape') window.closeGalleryImage();
+    });
   })();
 
   // shorts video popup
