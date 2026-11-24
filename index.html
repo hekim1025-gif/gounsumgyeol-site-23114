@@ -723,9 +723,11 @@
 <div class="video-modal-overlay" id="shortsOverlay" onclick="if(event.target===this) closeShortVideo();">
   <div class="video-modal" style="max-width: 360px;">
     <button class="video-modal-close" onclick="closeShortVideo()" aria-label="닫기">&times;</button>
+    <button class="gallery-lightbox-nav prev" onclick="event.stopPropagation(); prevShortVideo();" aria-label="이전 영상">&#10094;</button>
     <div class="shorts-modal-frame">
       <iframe id="shortsFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
+    <button class="gallery-lightbox-nav next" onclick="event.stopPropagation(); nextShortVideo();" aria-label="다음 영상">&#10095;</button>
   </div>
 </div>
 
@@ -1151,23 +1153,23 @@
 
     <div class="gallery-grid reveal">
       <!-- 사진을 추가하려면 아래 .gallery-item 블록을 복사해서 img의 src만 바꿔주세요 -->
-      <div class="gallery-item video" onclick="openShortVideo('J6RUFV2oNY8')">
+      <div class="gallery-item video" data-video-id="J6RUFV2oNY8" onclick="openShortVideo('J6RUFV2oNY8')">
         <img src="https://i.ytimg.com/vi/J6RUFV2oNY8/hqdefault.jpg" alt="제1회 고운숨결 문학상 쇼츠 영상" loading="lazy">
         <span class="play-badge"></span>
       </div>
-      <div class="gallery-item video" onclick="openShortVideo('TvJs13wSVuo')">
+      <div class="gallery-item video" data-video-id="TvJs13wSVuo" onclick="openShortVideo('TvJs13wSVuo')">
         <img src="https://i.ytimg.com/vi/TvJs13wSVuo/hqdefault.jpg" alt="제1회 고운숨결 문학상 쇼츠 영상" loading="lazy">
         <span class="play-badge"></span>
       </div>
-      <div class="gallery-item video" onclick="openShortVideo('hkE1S4wAhxI')">
+      <div class="gallery-item video" data-video-id="hkE1S4wAhxI" onclick="openShortVideo('hkE1S4wAhxI')">
         <img src="https://i.ytimg.com/vi/hkE1S4wAhxI/hqdefault.jpg" alt="제1회 고운숨결 문학상 쇼츠 영상" loading="lazy">
         <span class="play-badge"></span>
       </div>
-      <div class="gallery-item video" onclick="openShortVideo('Da0O4-pboxU')">
+      <div class="gallery-item video" data-video-id="Da0O4-pboxU" onclick="openShortVideo('Da0O4-pboxU')">
         <img src="https://i.ytimg.com/vi/Da0O4-pboxU/hqdefault.jpg" alt="제1회 고운숨결 문학상 쇼츠 영상" loading="lazy">
         <span class="play-badge"></span>
       </div>
-      <div class="gallery-item video" onclick="openShortVideo('E5AbY5juJBM')">
+      <div class="gallery-item video" data-video-id="E5AbY5juJBM" onclick="openShortVideo('E5AbY5juJBM')">
         <img src="https://i.ytimg.com/vi/E5AbY5juJBM/hqdefault.jpg" alt="제1회 고운숨결 문학상 쇼츠 영상" loading="lazy">
         <span class="play-badge"></span>
       </div>
@@ -1373,14 +1375,28 @@
   (function(){
     const overlay = document.getElementById('shortsOverlay');
     const frame = document.getElementById('shortsFrame');
+    const videoIds = Array.from(document.querySelectorAll('.gallery-item.video')).map(el => el.getAttribute('data-video-id'));
+    let currentIndex = -1;
+    function show(index){
+      currentIndex = (index + videoIds.length) % videoIds.length;
+      frame.src = 'https://www.youtube.com/embed/' + videoIds[currentIndex] + '?autoplay=1&mute=1&rel=0&playsinline=1&modestbranding=1';
+    }
     window.openShortVideo = function(videoId){
-      frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&rel=0&playsinline=1&modestbranding=1';
+      show(videoIds.indexOf(videoId));
       overlay.classList.add('show');
     };
+    window.nextShortVideo = function(){ show(currentIndex + 1); };
+    window.prevShortVideo = function(){ show(currentIndex - 1); };
     window.closeShortVideo = function(){
       overlay.classList.remove('show');
       frame.src = '';
     };
+    window.addEventListener('keydown', function(e){
+      if(!overlay.classList.contains('show')) return;
+      if(e.key === 'ArrowRight') window.nextShortVideo();
+      if(e.key === 'ArrowLeft') window.prevShortVideo();
+      if(e.key === 'Escape') window.closeShortVideo();
+    });
   })();
 </script>
 
