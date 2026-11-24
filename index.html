@@ -1343,59 +1343,50 @@
     setTimeout(autoOpen, 500);
   })();
 
-  // gallery lightbox
+  // unified gallery lightbox (photos + shorts videos navigate as one sequence)
   (function(){
-    const overlay = document.getElementById('galleryLightboxOverlay');
+    const photoOverlay = document.getElementById('galleryLightboxOverlay');
     const img = document.getElementById('galleryLightboxImg');
-    const photos = Array.from(document.querySelectorAll('.gallery-item:not(.video) img')).map(el => el.getAttribute('src'));
+    const videoOverlay = document.getElementById('shortsOverlay');
+    const frame = document.getElementById('shortsFrame');
+    const items = Array.from(document.querySelectorAll('.gallery-item')).map(function(el){
+      return el.classList.contains('video')
+        ? { type: 'video', id: el.getAttribute('data-video-id') }
+        : { type: 'photo', id: el.querySelector('img').getAttribute('src') };
+    });
     let currentIndex = -1;
+    function hideBoth(){
+      photoOverlay.classList.remove('show');
+      img.src = '';
+      videoOverlay.classList.remove('show');
+      frame.src = '';
+    }
     function show(index){
-      currentIndex = (index + photos.length) % photos.length;
-      img.src = photos[currentIndex];
+      currentIndex = (index + items.length) % items.length;
+      const item = items[currentIndex];
+      hideBoth();
+      if(item.type === 'video'){
+        frame.src = 'https://www.youtube.com/embed/' + item.id + '?autoplay=1&mute=1&rel=0&playsinline=1&modestbranding=1';
+        videoOverlay.classList.add('show');
+      } else {
+        img.src = item.id;
+        photoOverlay.classList.add('show');
+      }
     }
     window.openGalleryImage = function(src){
-      show(photos.indexOf(src));
-      overlay.classList.add('show');
+      show(items.findIndex(function(it){ return it.type === 'photo' && it.id === src; }));
     };
-    window.nextGalleryImage = function(){ show(currentIndex + 1); };
-    window.prevGalleryImage = function(){ show(currentIndex - 1); };
-    window.closeGalleryImage = function(){
-      overlay.classList.remove('show');
-      img.src = '';
-    };
-    window.addEventListener('keydown', function(e){
-      if(!overlay.classList.contains('show')) return;
-      if(e.key === 'ArrowRight') window.nextGalleryImage();
-      if(e.key === 'ArrowLeft') window.prevGalleryImage();
-      if(e.key === 'Escape') window.closeGalleryImage();
-    });
-  })();
-
-  // shorts video popup
-  (function(){
-    const overlay = document.getElementById('shortsOverlay');
-    const frame = document.getElementById('shortsFrame');
-    const videoIds = Array.from(document.querySelectorAll('.gallery-item.video')).map(el => el.getAttribute('data-video-id'));
-    let currentIndex = -1;
-    function show(index){
-      currentIndex = (index + videoIds.length) % videoIds.length;
-      frame.src = 'https://www.youtube.com/embed/' + videoIds[currentIndex] + '?autoplay=1&mute=1&rel=0&playsinline=1&modestbranding=1';
-    }
     window.openShortVideo = function(videoId){
-      show(videoIds.indexOf(videoId));
-      overlay.classList.add('show');
+      show(items.findIndex(function(it){ return it.type === 'video' && it.id === videoId; }));
     };
-    window.nextShortVideo = function(){ show(currentIndex + 1); };
-    window.prevShortVideo = function(){ show(currentIndex - 1); };
-    window.closeShortVideo = function(){
-      overlay.classList.remove('show');
-      frame.src = '';
-    };
+    window.nextGalleryImage = window.nextShortVideo = function(){ show(currentIndex + 1); };
+    window.prevGalleryImage = window.prevShortVideo = function(){ show(currentIndex - 1); };
+    window.closeGalleryImage = window.closeShortVideo = function(){ hideBoth(); };
     window.addEventListener('keydown', function(e){
-      if(!overlay.classList.contains('show')) return;
-      if(e.key === 'ArrowRight') window.nextShortVideo();
-      if(e.key === 'ArrowLeft') window.prevShortVideo();
-      if(e.key === 'Escape') window.closeShortVideo();
+      if(!photoOverlay.classList.contains('show') && !videoOverlay.classList.contains('show')) return;
+      if(e.key === 'ArrowRight') show(currentIndex + 1);
+      if(e.key === 'ArrowLeft') show(currentIndex - 1);
+      if(e.key === 'Escape') hideBoth();
     });
   })();
 </script>
